@@ -144,9 +144,6 @@ void EsABO(Nodo *raiz){
 			
 		}
 			
-
-
-
 }
 int CantidadHojas(Nodo *raiz,int sum){
 	Nodo*aux;
@@ -163,6 +160,26 @@ int CantidadHojas(Nodo *raiz,int sum){
 		
 	}
 	return sum ;
+
+}
+void Internos(Arbol *ABO,Nodo *raiz){
+			Nodo *aux;
+			aux = raiz;
+			if(aux == NULL){
+				return;
+			}
+			if(ABO->raiz != aux){
+				if(aux->der != NULL || aux->izq !=NULL){
+						//if(aux->dato != raiz->dato){//aqui hay un error
+				printf("%d,",aux->dato);
+					
+				}
+			}
+			Internos(ABO,aux->izq);
+			Internos(ABO,aux->der);
+				
+	
+
 
 }
 int altura(Nodo *raiz){
@@ -223,6 +240,7 @@ int main(){
 	printf("altura\n");
 	Al = altura(ABO->raiz);
 	printf("%d\n",Al);
-	
+	printf("\nInternos\n");
+	Internos(ABO,ABO->raiz);
 	  
 }
