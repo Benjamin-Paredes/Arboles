@@ -166,22 +166,40 @@ void Internos(Arbol *ABO,Nodo *raiz){
 			Nodo *aux;
 			aux = raiz;
 			if(aux == NULL){
-				return;
+				return  ;
 			}
 			if(ABO->raiz != aux){
 				if(aux->der != NULL || aux->izq !=NULL){
 						//if(aux->dato != raiz->dato){//aqui hay un error
-				printf("%d,",aux->dato);
+					printf("%d,",aux->dato);
 					
 				}
 			}
 			Internos(ABO,aux->izq);
 			Internos(ABO,aux->der);
+			return ;
 				
 	
-
-
 }
+/*int NumInternos(Arbol *ABO,Nodo *raiz){
+			Nodo *aux ;
+			aux = raiz;
+			if(aux == NULL){
+				return 0 ;
+			}else{
+				
+				if(aux->izq == NULL && aux->der == NULL){
+					return 0 ;
+				}else{
+					if(ABO->raiz != aux ){
+						return NumInternos(ABO,aux->izq) + NumInternos(ABO,aux->der) + 1;
+					}else{
+						NumInternos(ABO,aux->izq);
+						NumInternos(ABO,aux->der);
+				}
+			}
+	
+}*/
 int altura(Nodo *raiz){
 	int count ;
 	int count1;
@@ -209,7 +227,32 @@ int altura(Nodo *raiz){
 
 
 }
+int nivel(Nodo *raiz){
+	int N1 = 0;
+	int N2 = 0;
+	if(raiz ==NULL){
+		return -1;
+	}
+	if(raiz->izq == NULL && raiz->der == NULL){
+		printf("\nPadre:%d Nivel izq:%d nivel der:%d\n",raiz->dato,N1,N2);
+		return 0 ;
+	
+	}else{
+		N1 = nivel(raiz->izq)+1;
+		N2 = nivel(raiz->der)+1;
+		printf("\nPadre:%d Nivel izq:%d nivel der:%d\n",raiz->dato,N1,N2);
+		if(N1 > N2){
+			return 	N1 ;
+		}else{
+			return N2 ;
+		
+		
+		}
+		
+	
+	}
 
+}
 
 
 
@@ -242,5 +285,10 @@ int main(){
 	printf("%d\n",Al);
 	printf("\nInternos\n");
 	Internos(ABO,ABO->raiz);
-	  
+	sum = 0;
+	sum1 =0;
+	printf("\n");
+	//sum1 = NumInternos(ABO,ABO->raiz);
+	//printf("NUM INTERNOS: %d\n",sum1);
+	nivel(ABO->raiz);
 }
