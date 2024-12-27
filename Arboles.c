@@ -291,4 +291,4 @@ int main(){
 	//sum1 = NumInternos(ABO,ABO->raiz);
 	//printf("NUM INTERNOS: %d\n",sum1);
 	nivel(ABO->raiz);
-}
+}//aaa
